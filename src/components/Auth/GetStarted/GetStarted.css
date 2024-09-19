@@ -1,0 +1,26 @@
+.frontpage{
+    display: grid;
+    place-items: center;
+    height: 96.5vh;
+    color: white;
+}
+.startingPage{
+    color: white;
+    align-items: center;
+}
+.redirect-link{
+    display: block;
+    background: #4f46e5;
+    padding: 10px 20px;
+    border-radius: 7px;
+    margin-top: 20px;
+    
+}
+.redirect-link:hover{
+    background: #2d26b3;
+    text-decoration: none;
+}
+.startingPage img{
+    width: 70%;
+   
+}
