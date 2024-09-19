@@ -1,0 +1,17 @@
+/* Welcome message styles */
+.welcome-message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-top: 3.5rem;
+    color: white;  
+    text-align: center;
+    background: none;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    padding-bottom: 1.5rem;
+}
+h4{
+    margin-top: -33px;
+    font-weight: lighter;
+}

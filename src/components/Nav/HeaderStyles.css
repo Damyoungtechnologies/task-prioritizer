@@ -1,0 +1,37 @@
+/* Main navbar container */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 50px;
+    background-color: none;
+    padding: 20px auto;
+    position: relative;
+}
+
+/* Link styles & Logout button */
+.nav-link, .logout-button {
+    font-size: 0.875rem; 
+    background: linear-gradient(90deg, rgba(128, 32, 0, 1) 0%, rgba(140, 59, 140, 1) 100%);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bolder;
+    transition: ease-in .8s;
+    border: none;
+}
+
+.logout-button:hover {
+    opacity: .6;
+}
+
+.nav-link:hover {
+    opacity: .6;
+    
+}
