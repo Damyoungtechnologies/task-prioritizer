@@ -1,0 +1,58 @@
+  .quadrant-container{
+    display: grid;
+    place-items: center;
+  }
+.quadrants {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 4fr));
+  margin-bottom: 20px;
+  gap: 10px; /* Optional: Add some y between the grid items */
+}
+  
+  .quadrant {
+    border: 2px solid #2ec1ac;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+  }
+  
+  .quadrant h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+  .quadrant .un1{
+    color: #00ff00;
+  }
+  .quadrant .un2{
+    color: #ffff00;
+  }
+  .quadrant .un3{
+    color: rgb(255, 102, 0);
+  }
+  .quadrant .un4{
+    color: #ff69b4;
+  }
+  .quadrant ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    font-size: 1.2rem;
+    text-align: justify;
+  }
+  
+  .quadrant ol.no-tasks {
+    list-style-type: none;
+  }
+  
+  .quadrant li {
+    margin-bottom: 5px;
+    font-weight: lighter;
+  }
+  
+  .no-tasks li {
+    font-style: italic;
+    color: #888;
+    font-weight: lighter;
+  }
+  

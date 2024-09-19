@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+.myTask{
+  margin-top: -10px;
+}
+.task-controller {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  justify-content: center;
+  border: #2ec1ac 2px solid;
+  margin: auto;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  box-sizing: border-box;
+}
+
+.button {
+  border: 1px solid #423929;
+  text-transform: uppercase;
+  width: fit-content;
+  padding: 0.3rem 1.5rem;
+  background-color: #9ad3bc;
+  border-color: #9ad3bc;
+  color: #132743;
+  font-weight: 500;
+  font-family: "Kanit", sans-serif;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  margin-right: 0.25rem;
+}
+
+.button:hover {
+  background-color:#2ec1ac;
+  border-color:  #2ec1ac;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+  border-color:  #2ec1ac;
+  background-color: #2ec1ac;;
+  color: #eeecda;
+}
+
+.button.addTask {
+  font-size: 3rem;
+  padding: 0 0 0.4rem 0;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 1rem;
+  margin-top: 2rem;
+  align-self: flex-end;
+  margin: auto;
+}
+
+.button.moveTask {
+  font-size: 1.5rem;
+  padding: 0.5rem 0.5rem;
+  margin-bottom: 0;
+  line-height: 1rem;
+}
+
+.button.delete {
+  background-color: #ffa5a5;
+  border-color: #ffa5a5;
+}
+
+
+.button.delete:hover {
+  background-color: #ff8282;
+  border-color: #ff8282;
+}
+
+@media only screen and (max-width: 900px){
+  .task-controller {
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .task-controller{
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 380px){
+  .task-controller {
+    padding: .5rem;
+  }
+}
