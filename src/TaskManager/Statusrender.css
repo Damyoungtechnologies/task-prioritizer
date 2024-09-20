@@ -1,0 +1,28 @@
+.statusLine {
+  flex: 1 1 30%; /* Distribute available space evenly among the statusLine containers */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+.statusLine h3 {
+  font-weight: lighter;
+  margin: 1rem auto;
+  align-self: flex-start;
+}
+#hideme{
+  display: none;
+}
+
+
+@media only screen and (max-width: 500px){
+  .statusLine {
+    width: 300px;
+  }
+  .statusLine h3:hover #hideme{
+    display: inline-block;
+  }
+}
+  
