@@ -73,7 +73,7 @@ export default function Task(props) {
         &#171;
       </button>
       {/* Close button to hide the task */}
-      <button onClick={handleHideTask} id="relax" className="button delete">X</button>
+      {!(collapsed) ? <button onClick={handleHideTask} id="relax" className="button delete">X</button> : null}
       <form onSubmit={handleSubmit} className={collapsed ? "collapsed" : ""}>
         <input
           type="text"
