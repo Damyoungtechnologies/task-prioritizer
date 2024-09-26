@@ -33,11 +33,20 @@ export const doSignInWithEmailAndPassword = (emailAddress, userPassword) => {
 
 export const doSignInWithGoogle = async () => {
   const googleProvider = new GoogleAuthProvider();
-  const authResult = await signInWithPopup(auth, googleProvider);
-  const loggedIn = authResult.user;
 
-  // Add user to Firestore or handle user info as needed
+  try {
+    const authResult = await signInWithPopup(auth, googleProvider);
+    const loggedIn = authResult.user;
+
+    if (loggedIn) {
+      console.log("Google sign-in successful:", loggedIn);
+      // The `onAuthStateChanged` listener should now automatically detect the signed-in user
+    }
+  } catch (error) {
+    console.error("Error during Google sign-in:", error);
+  }
 };
+
 
 export const doSignOut = () => {
   return auth.signOut();
