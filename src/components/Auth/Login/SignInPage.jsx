@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Navigate, Link, useNavigate } from 'react-router-dom';
 import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../../Firebase/Auth';
 import { useAuth } from '../../../contextManager/authContextManager';
-import './Login.css'; 
-import {icon} from "../../Assets";
-
+import './Login.css';
+import { icon } from "../../Assets";
 
 const SignInPage = () => {
     const navigate = useNavigate();
@@ -19,11 +18,12 @@ const SignInPage = () => {
         e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
-            try {
-                await doSignInWithEmailAndPassword(email, password);
+            setErrorMessage('');  // Clear any previous error message
+            const result = await doSignInWithEmailAndPassword(email, password);
+            if (result.success) {
                 navigate("/Homepage");
-            } catch (error) {
-                setErrorMessage(error.message);
+            } else {
+                setErrorMessage(result.error.message);
                 setIsSigningIn(false);
             }
         }
@@ -33,15 +33,18 @@ const SignInPage = () => {
         e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
-            try {
-                await doSignInWithGoogle();
+            setErrorMessage(''); // Clear any previous error message
+            const result = await doSignInWithGoogle();
+            if (result.success) {
                 navigate("/Homepage");
-            } catch (error) {
-                setErrorMessage(error.message);
+            } else {
+                console.error("Google sign-in error:", result.error); // Log full error details
+                setErrorMessage(result.error.message || "Google sign-in failed.");
                 setIsSigningIn(false);
             }
         }
     };
+    
 
     return (
         <div>
@@ -80,7 +83,7 @@ const SignInPage = () => {
 
                         {errorMessage && <span className="error-message">{errorMessage}</span>}
 
-                        <button type="submit" disabled={isSigningIn ? "disabled" : null} className="submit-button">
+                        <button type="submit" disabled={isSigningIn} className="submit-button">
                             {isSigningIn ? 'Signing In...' : 'Sign In'}
                         </button>
                     </form>
@@ -91,7 +94,7 @@ const SignInPage = () => {
                     <div className="divider">OR</div>
 
                     <button
-                        disabled={isSigningIn ? "disabled" : null}
+                        disabled={isSigningIn}
                         onClick={handleGoogleSignIn}
                         className="google-signin-button"
                     >
