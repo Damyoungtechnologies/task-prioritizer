@@ -6,7 +6,7 @@ import './HeaderStyles.css';
 
 const NavigationBar = () => {
   const navigate = useNavigate();
-  const { loggedIn } = useAuth(); // Pull loggedIn state from the context
+  const { loggedIn } = useAuth();
 
   const handleLogout = () => {
     doSignOut().then(() => {
@@ -16,10 +16,8 @@ const NavigationBar = () => {
 
   return (
     <nav className="navbar">
-      {loggedIn ? ( // Check loggedIn state to display the correct buttons
-        <>
-          <button onClick={handleLogout} className="nav-link logout-button">Logout</button>
-        </>
+      {loggedIn ? (
+        <button onClick={handleLogout} className="nav-link logout-button">Logout</button>
       ) : (
         <>
           <Link className="nav-link" to="/login">Login</Link>
@@ -29,5 +27,6 @@ const NavigationBar = () => {
     </nav>
   );
 };
+
 
 export default NavigationBar;

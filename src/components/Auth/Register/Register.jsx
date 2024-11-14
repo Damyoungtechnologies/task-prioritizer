@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Navigate, Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../contextManager/authContextManager';
+import { Link, useNavigate } from 'react-router-dom';
+// import { useAuth } from '../../../contextManager/authContextManager';
 import { doCreateUserWithEmailAndPassword } from '../../../Firebase/Auth';
 import './RegisterStyles.css'; 
 // Registration page - Ensure you have updateProfile
@@ -16,44 +16,42 @@ const Register = () => {
     const [isRegistering, setIsRegistering] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const { userLoggedIn } = useAuth();
+    // const { LoggedIn } = useAuth();
 
-
-const handleRegister = async (e) => {
-    e.preventDefault();
-    
-    if (password !== confirmPassword) {
-        setErrorMessage('Passwords do not match');
-        return;
-    }
-
-    setErrorMessage('');
-    
-    if (!isRegistering) {
-        setIsRegistering(true);
-        try {
-            // Register the user and pass the email and password
-            const userCredential = await doCreateUserWithEmailAndPassword(displayName, email, password);
-            
-            // Update the user profile with displayName (username)
-            await updateProfile(userCredential.user, {
-                displayName: displayName,
-            });
-
-            // Registration successful, navigate to login page
-            navigate('/login');
-        } catch (err) {
-            setErrorMessage(err.message);
-            setIsRegistering(false);
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        
+        if (password !== confirmPassword) {
+            setErrorMessage('Passwords do not match');
+            return;
         }
-    }
-};
-
+    
+        setErrorMessage('');
+        
+        if (!isRegistering) {
+            setIsRegistering(true);
+            try {
+                // Register the user and pass the email and password
+                const userCredential = await doCreateUserWithEmailAndPassword(displayName, email, password);
+                
+                // Update the user profile with displayName (username)
+                await updateProfile(userCredential.user, {
+                    displayName: displayName,
+                });
+    
+                // Registration successful, navigate to login page
+                navigate('/login');
+            } catch (err) {
+                setErrorMessage(err.message);
+            } finally {
+                setIsRegistering(false);
+            }
+        }
+    };
 
     return (
         <>
-            {userLoggedIn && (<Navigate to={'/Homepage'} replace={true} />)}
-
+         
             <main className="main-container">
                 <div className="form-container">
                     <div className="header">
@@ -135,5 +133,4 @@ const handleRegister = async (e) => {
         </>
     );
 };
-
 export default Register;

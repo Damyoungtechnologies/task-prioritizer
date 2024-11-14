@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signInWithPopup,
+  signOut,
   GoogleAuthProvider,
 } from "firebase/auth";
 
@@ -19,6 +20,9 @@ export const doCreateUserWithEmailAndPassword = async (username, emailAddress, u
     await updateProfile(userCredential.user, {
       displayName: username,
     });
+
+    // Sign out the user after registration
+    await signOut(auth);
 
     return { success: true, user: userCredential.user };
   } catch (error) {
